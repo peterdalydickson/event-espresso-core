@@ -1,13 +1,13 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
 
-import { DisplayDates } from '../../../../interfaces/datetimes/types';
+import { DateToDisplay } from '@sharedServices/filterState';
 
 /**
  * DatesListTableHeader
  * header details for the Dates list table
  */
-const datesListTableHeader = (displayDates: DisplayDates) => {
+const datesListTableHeader = (dateToDisplay: DateToDisplay) => {
 	const cellsData = [
 		{
 			key: 'stripe',
@@ -87,11 +87,11 @@ const datesListTableHeader = (displayDates: DisplayDates) => {
 	];
 
 	const cells = cellsData.filter((cell) => {
-		if (displayDates === DisplayDates.start && cell.key === 'end') {
+		if (dateToDisplay === DateToDisplay.start && cell.key === 'end') {
 			return null;
 		}
 
-		if (displayDates === DisplayDates.end && cell.key === 'start') {
+		if (dateToDisplay === DateToDisplay.end && cell.key === 'start') {
 			return null;
 		}
 

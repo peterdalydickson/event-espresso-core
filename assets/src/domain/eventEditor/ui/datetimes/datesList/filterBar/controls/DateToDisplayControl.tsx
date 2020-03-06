@@ -1,39 +1,39 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
-import { DisplayDates } from '@edtrInterfaces/datetimes/types';
 import { SelectInput } from '@appInputs/SelectInput';
+import { DateToDisplay } from '@sharedServices/filterState';
 
-interface DisplayDatesControlProps {
-	displayDates: DisplayDates;
-	setDisplayDates: (displayDates: DisplayDates) => void;
+interface DateToDisplayControlProps {
+	dateToDisplay: DateToDisplay;
+	setDateToDisplay: (dateToDisplay: DateToDisplay) => void;
 }
 /**
  * filter for controlling which dates display in a list of Event Dates
  */
-const DisplayDatesControl: React.FC<DisplayDatesControlProps> = React.memo(({ displayDates, setDisplayDates }) => {
+const DateToDisplayControl: React.FC<DateToDisplayControlProps> = React.memo(({ dateToDisplay, setDateToDisplay }) => {
 	return (
 		<SelectInput
 			label={__('display')}
 			className='espresso-date-list-filter-bar-display-select'
-			value={displayDates}
+			value={dateToDisplay}
 			options={[
 				{
-					value: DisplayDates.start,
+					value: DateToDisplay.start,
 					label: __('start dates only'),
 				},
 				{
-					value: DisplayDates.end,
+					value: DateToDisplay.end,
 					label: __('end dates only'),
 				},
 				{
-					value: DisplayDates.both,
+					value: DateToDisplay.both,
 					label: __('start and end dates'),
 				},
 			]}
-			onChange={setDisplayDates}
+			onChange={setDateToDisplay}
 			size='large'
 		/>
 	);
 });
 
-export default DisplayDatesControl;
+export default DateToDisplayControl;
