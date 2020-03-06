@@ -4,13 +4,11 @@ import { useSpring, animated } from 'react-spring';
 import { SearchInput } from '../../../input';
 import useRect from '../../../../services/hooks/useRect';
 
-type voidFn = () => void;
-
 interface CollapsibleProps {
 	entityFilters: JSX.Element;
 	listId: string;
 	searchText: string;
-	setSearchText: voidFn;
+	setSearchText: (text: string) => void;
 	showEntityFilters: boolean;
 }
 

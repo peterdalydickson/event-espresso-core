@@ -4,13 +4,13 @@ import { __ } from '@wordpress/i18n';
 
 import { EspressoButton, EspressoButtonType, Icon } from '../../../input/EspressoButton';
 import Collapsible from './Collapsible';
-import { EntityListFilterState } from './useEntityListFilterState';
+import { EntityListFilterStateManager } from './types';
 
 import './style.scss';
 
-interface EntityListFilterBarProps {
+interface EntityListFilterBarProps<ELFS extends EntityListFilterStateManager> {
 	entityFilters: JSX.Element;
-	filterState: EntityListFilterState;
+	filterState: ELFS;
 	listId?: string;
 }
 
@@ -18,7 +18,7 @@ interface EntityListFilterBarProps {
  * EntityListFilterBar
  * a group of inputs for controlling how a list of entities is displayed
  */
-const EntityListFilterBar: React.FC<EntityListFilterBarProps> = ({ entityFilters, filterState, listId }) => {
+const EntityListFilterBar: React.FC<EntityListFilterBarProps<any>> = ({ entityFilters, filterState, listId }) => {
 	if (!filterState) return null;
 
 	const {
@@ -29,7 +29,7 @@ const EntityListFilterBar: React.FC<EntityListFilterBarProps> = ({ entityFilters
 		showEntityFilters,
 		toggleEntityFilters,
 		view,
-	}: EntityListFilterState = filterState;
+	} = filterState;
 
 	const listViewButton = React.useMemo(
 		() => (
