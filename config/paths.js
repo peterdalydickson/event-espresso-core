@@ -94,10 +94,10 @@ module.exports = {
 		// 	resolveApp,
 		// 	assetsPath + 'components/ui/styles/themes/default/index'
 		// ),
-		'eventespresso-core-css-default': resolveModule(
-			resolveApp,
-			'./' + ASSETS_SOURCE_FOLDER + '/application/ui/styles/themes/default/index'
-		),
+		// 'eventespresso-core-css-default': resolveModule(
+		// 	resolveApp,
+		// 	'./' + ASSETS_SOURCE_FOLDER + '/application/ui/styles/themes/default/index'
+		// ),
 	},
 
 	proxySetup: resolveApp('src/setupProxy.js'),

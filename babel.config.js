@@ -23,7 +23,7 @@ module.exports = function(api) {
 				plugins: [
 					'ramda',
 					[
-						'@wordpress/babel-plugin-makepot',
+						'@wordpress/babel-plugin-makepot', // TODO check if we really need this.
 						{
 							output: 'languages/ee-js.pot',
 						},

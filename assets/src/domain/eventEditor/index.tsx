@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 
 import './interfaces/types';
-import '../../application/ui/styles/themes/default';
+import '../../application/ui/styles/themes/default/index.scss';
 import EventEditor from './ui/EventEditor';
 import { ContextProviders } from './services/context/EventEditorContext';
 
