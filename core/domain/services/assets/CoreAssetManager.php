@@ -201,26 +201,26 @@ class CoreAssetManager extends AssetManager
         $this->registerWpAssets();
 
         $this->addJs(self::JS_HANDLE_JS_CORE)->setHasInlineData();
-        $this->addJs(self::JS_HANDLE_VENDOR);
-        $this->addJs(self::JS_HANDLE_UTILS)->setRequiresTranslation();
-        $this->addJs(self::JS_HANDLE_VALIDATORS)->setRequiresTranslation();
-        $this->addJs(self::JS_HANDLE_HELPERS)->setRequiresTranslation();
-        $this->addJs(self::JS_HANDLE_MODEL)->setRequiresTranslation();
-        $this->addJs(self::JS_HANDLE_MODEL_SCHEMA)->setRequiresTranslation();
-        $this->addJs(self::JS_HANDLE_HOOKS);
-        $this->addJs(self::JS_HANDLE_VALUE_OBJECTS)->setRequiresTranslation();
-        $this->addJs(self::JS_HANDLE_DATA_STORES)->setRequiresTranslation()->setInlineDataCallback(
-            static function () {
-                wp_add_inline_script(
-                    CoreAssetManager::JS_HANDLE_DATA_STORES,
-                    is_admin()
-                        ? 'wp.apiFetch.use( eejs.middleWares.apiFetch.capsMiddleware( eejs.middleWares.apiFetch.CONTEXT_CAPS_EDIT ) )'
-                        : 'wp.apiFetch.use( eejs.middleWares.apiFetch.capsMiddleware )'
-                );
-            }
-        );
-        $this->addJs(self::JS_HANDLE_HOCS, [self::JS_HANDLE_DATA_STORES])->setRequiresTranslation();
-        $this->addJs(self::JS_HANDLE_COMPONENTS, [self::JS_HANDLE_DATA_STORES])->setRequiresTranslation();
+        // $this->addJs(self::JS_HANDLE_VENDOR);
+        // $this->addJs(self::JS_HANDLE_UTILS)->setRequiresTranslation();
+        // $this->addJs(self::JS_HANDLE_VALIDATORS)->setRequiresTranslation();
+        // $this->addJs(self::JS_HANDLE_HELPERS)->setRequiresTranslation();
+        // $this->addJs(self::JS_HANDLE_MODEL)->setRequiresTranslation();
+        // $this->addJs(self::JS_HANDLE_MODEL_SCHEMA)->setRequiresTranslation();
+        // $this->addJs(self::JS_HANDLE_HOOKS);
+        // $this->addJs(self::JS_HANDLE_VALUE_OBJECTS)->setRequiresTranslation();
+        // $this->addJs(self::JS_HANDLE_DATA_STORES)->setRequiresTranslation()->setInlineDataCallback(
+        //     static function () {
+        //         wp_add_inline_script(
+        //             CoreAssetManager::JS_HANDLE_DATA_STORES,
+        //             is_admin()
+        //                 ? 'wp.apiFetch.use( eejs.middleWares.apiFetch.capsMiddleware( eejs.middleWares.apiFetch.CONTEXT_CAPS_EDIT ) )'
+        //                 : 'wp.apiFetch.use( eejs.middleWares.apiFetch.capsMiddleware )'
+        //         );
+        //     }
+        // );
+        // $this->addJs(self::JS_HANDLE_HOCS, [self::JS_HANDLE_DATA_STORES])->setRequiresTranslation();
+        // $this->addJs(self::JS_HANDLE_COMPONENTS, [self::JS_HANDLE_DATA_STORES])->setRequiresTranslation();
 
         $this->registry->addData('eejs_api_nonce', wp_create_nonce('wp_rest'));
         $this->registry->addData(

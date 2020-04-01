@@ -125,18 +125,18 @@ var eeEditorData={$data};
                         );
                     }
                 );
-                add_action(
-                    'admin_footer',
-                    static function () use ($data) {
-                        wp_add_inline_script(
-                            EspressoEditorAssetManager::JS_HANDLE_EDITOR_PROTOTYPE,
-                            "
-var eeEditorData={$data};
-",
-                            'before'
-                        );
-                    }
-                );
+//                 add_action(
+//                     'admin_footer',
+//                     static function () use ($data) {
+//                         wp_add_inline_script(
+//                             EspressoEditorAssetManager::JS_HANDLE_EDITOR_PROTOTYPE,
+//                             "
+// var eeEditorData={$data};
+// ",
+//                             'before'
+//                         );
+//                     }
+//                 );
             }
         }
     }

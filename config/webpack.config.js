@@ -4,9 +4,11 @@ const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
 const resolve = require('resolve');
+
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const PnpWebpackPlugin = require('pnp-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const InlineChunkHtmlPlugin = require('react-dev-utils/InlineChunkHtmlPlugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -16,14 +18,14 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
-const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpackPlugin');
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 const postcssNormalize = require('postcss-normalize');
-const DependencyExtractionWebpackPlugin = require('@wordpress/dependency-extraction-webpack-plugin');
-const miniExtract = require('mini-css-extract-plugin');
+// const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
+// const DependencyExtractionWebpackPlugin = require('@wordpress/dependency-extraction-webpack-plugin');
+// const miniExtract = require('mini-css-extract-plugin');
 
 const paths = require('./paths');
 const modules = require('./modules');
@@ -285,7 +287,7 @@ module.exports = function(webpackEnv) {
 			alias: {
 				// Support React Native Web
 				// https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
-				'@eventespresso/eejs': entries['eejs-core'],
+				// '@eventespresso/eejs': entries['eejs-core'],
 				// Allows for better profiling with ReactDevTools
 				...(isEnvProductionProfile && {
 					'react-dom$': 'react-dom/profiling',
@@ -604,6 +606,7 @@ module.exports = function(webpackEnv) {
 					formatter: isEnvProduction ? typescriptFormatter : undefined,
 				}),
 			new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /(en)$/),
+			isEnvDevelopment && new BundleAnalyzerPlugin({ analyzerPort: 8880 }),
 		].filter(Boolean),
 		// Some libraries import Node modules but don't use them in the browser.
 		// Tell Webpack to provide empty mocks for them so importing them works.
