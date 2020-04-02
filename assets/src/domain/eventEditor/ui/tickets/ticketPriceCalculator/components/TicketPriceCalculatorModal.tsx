@@ -56,7 +56,8 @@ const TicketPriceCalculatorModal: React.FC = () => {
 			title={sprintf(__('Price Calculator for Ticket: %s'), ticket.name)}
 			visible={true}
 			width={'80%'}
-			wrapClassName='ee-tpc-modal'
+			wrapClassName='ee-modal ee-tpc-modal'
+			zIndex={1200}
 		>
 			<div className='tpc-body'>
 				<TicketPriceCalculator />
